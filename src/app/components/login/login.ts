@@ -58,9 +58,9 @@ export class LoginComponent {
       return;
     }
 
-    if (payload.roles.includes("ADMIN")) {
-      this.router.navigate(['/painel-adm']);
-    } else if (payload.roles.includes("USER")) {
+    if (payload.roles.includes("ROLE_ADMIN")) {
+      this.router.navigate(['/home']);
+    } else if (payload.roles.includes("ROLE_USER")) {
       this.router.navigate(['/painel-usuario']);
     } else {
       alert("Perfil de usuário não reconhecido.");

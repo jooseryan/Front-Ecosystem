@@ -1,0 +1,47 @@
+<h1>Fonte Bibliográfica</h1>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <input formControlName="reviewerCode" placeholder="Código do Revisor" />
+  <input formControlName="title" placeholder="Título" />
+  <input formControlName="year" type="number" placeholder="Ano" />
+
+  <label>Tipo</label>
+  <select formControlName="type">
+    <option value="" disabled selected>Selecione o tipo</option>
+    <option *ngFor="let t of sourceTypes" [value]="t">{{ t }}</option>
+  </select>
+
+  <label>Mídia</label>
+  <select formControlName="media">
+    <option value="" disabled selected>Selecione a mídia</option>
+    <option *ngFor="let m of mediaTypes" [value]="m">{{ m }}</option>
+  </select>
+
+  <input formControlName="reference" placeholder="Referência" />
+  <input formControlName="url" placeholder="Link" />
+  <input formControlName="driveUrl" placeholder="Link do Drive" />
+  <input formControlName="imageUrl" placeholder="Link da Imagem" />
+  <textarea formControlName="notes" placeholder="Observação"></textarea>
+  <textarea formControlName="abstractText" placeholder="Resumo"></textarea>
+
+  <h3>Autores</h3>
+  <div formArrayName="authors">
+    <div *ngFor="let author of authors.controls; let i = index" [formGroupName]="i">
+      <input formControlName="name" placeholder="Nome do Autor" />
+      <input formControlName="email" placeholder="Email" />
+      <input formControlName="orcid" placeholder="ORCID" />
+      <input formControlName="affiliation" placeholder="Afiliação" />
+    </div>
+    <button type="button" (click)="addAuthor()">+ Adicionar Autor</button>
+  </div>
+
+  <h3>Palavras-chave</h3>
+  <div formArrayName="keywords">
+    <div *ngFor="let keyword of keywords.controls; let i = index" [formGroupName]="i">
+      <input formControlName="value" placeholder="Palavra-chave" />
+    </div>
+    <button type="button" (click)="addKeyword()">+ Adicionar Palavra-chave</button>
+  </div>
+
+  <br />
+  <button type="submit">Enviar</button>
+</form>

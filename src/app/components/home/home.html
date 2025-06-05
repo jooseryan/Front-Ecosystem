@@ -1,0 +1,8 @@
+<app-sidenav
+  [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()"
+  (changeIsLeftSidebarCollapsed)="isLeftSidebarCollapsed.set($event)"
+/>
+
+<div class="body" [ngClass]="sizeClass()">
+  <router-outlet />
+</div>
