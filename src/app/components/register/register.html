@@ -1,8 +1,8 @@
 <h1>Fonte Bibliográfica</h1>
 <form [formGroup]="form" (ngSubmit)="submit()">
-  <input formControlName="reviewerCode" placeholder="Código do Revisor" />
   <input formControlName="title" placeholder="Título" />
   <input formControlName="year" type="number" placeholder="Ano" />
+  <input formControlName="reviewerCode" placeholder="Identificador da Fonte Ex: A001" />
 
   <label>Tipo</label>
   <select formControlName="type">
@@ -17,16 +17,16 @@
   </select>
 
   <input formControlName="reference" placeholder="Referência" />
-  <input formControlName="url" placeholder="Link" />
+  <input formControlName="url" placeholder="Link para Fonte" />
   <input formControlName="driveUrl" placeholder="Link do Drive" />
   <input formControlName="imageUrl" placeholder="Link da Imagem" />
-  <textarea formControlName="notes" placeholder="Observação"></textarea>
+  <textarea formControlName="notes" placeholder="Observações"></textarea>
   <textarea formControlName="abstractText" placeholder="Resumo"></textarea>
 
   <h3>Autores</h3>
   <div formArrayName="authors">
     <div *ngFor="let author of authors.controls; let i = index" [formGroupName]="i">
-      <input formControlName="name" placeholder="Nome do Autor" />
+      <input formControlName="name" placeholder="Nome completo do autor" />
       <input formControlName="email" placeholder="Email" />
       <input formControlName="orcid" placeholder="ORCID" />
       <input formControlName="affiliation" placeholder="Afiliação" />

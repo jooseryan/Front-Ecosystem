@@ -1,6 +1,7 @@
 import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
+import { routes } from '../../app.routes';
 
 @Component({
   selector: 'app-sidenav',
@@ -14,10 +15,8 @@ export class LeftSidebarComponent {
   changeIsLeftSidebarCollapsed = output<boolean>();
 
   items = [
-    { routeLink: 'dashboard', icon: 'fas fa-chart-line', label: 'Dashboard' },
-    { routeLink: 'register', icon: 'fas fa-address-card', label: 'Registrar' },
-    { routeLink: 'update', icon: 'fas fa-pen-to-square', label: 'Atualizar' },
-    { routeLink: 'delete', icon: 'fas fa-trash', label: 'Deletar' },
+    { routeLink: 'seach', icon: 'fas fa-magnifying-glass', label: 'Pesquisar'},
+    { routeLink: 'register', icon: 'fas fa-plus', label: 'Cadastrar' },
   ];
 
   toggleCollapse(): void {
