@@ -1,91 +1,65 @@
-form {
-  max-width: 600px;
-  max-height: 90vh;
-  overflow-y: auto;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: #f9f9fb;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Reset básico e altura total para body e html */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* evita scroll na página inteira */
 }
 
-input, select, textarea {
-  width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 15px;
-  border: 1.8px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-  box-sizing: border-box;
-}
-
-input:focus, select:focus, textarea:focus {
-  border-color: #33B875;
-  outline: none;
-  box-shadow: 0 0 8px #66D1A1;
-}
-
-label {
-  font-weight: 600;
-  margin-bottom: 6px;
-  display: block;
-  color: #333;
-}
-
-h3 {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  color: #00994CFF;
-  border-bottom: 2px solid #007A3D;
-  padding-bottom: 6px;
-}
-
-button[type="button"] {
-  background-color: #eee;
-  border: 1.5px solid #999;
-  padding: 8px 15px;
-  border-radius: 6px;
-  cursor: pointer;
-  color: #555;
-  font-weight: 600;
-  transition: background-color 0.25s ease, border-color 0.25s ease;
-  margin-bottom: 20px;
-}
-
-button[type="button"]:hover {
-  background-color: #d1d1d1;
-  border-color: #666;
-}
-
-button[type="submit"] {
-  background-color: #00994CFF;
-  color: white;
-  border: none;
-  padding: 14px 25px;
-  font-size: 1.1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 700;
-  transition: background-color 0.3s ease;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-button[type="submit"]:hover {
+.toolbar-register {
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #007A3D;
+  color: white;
+  flex-shrink: 0;
 }
 
-div[formArrayName] > div {
-  margin-bottom: 20px;
-  border-left: 3px solid #33B875;
-  padding-left: 15px;
+.form-scroll-container {
+  height: calc(100vh - 64px); /* altura total da tela menos a toolbar */
+  overflow-y: auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.form-container {
+  max-width: 900px; /* limita a largura do form */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 48px; /* espaço para os botões fixos, se quiser */
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.author-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.form-actions {
+  position: sticky;
+  bottom: 0;
+  background: white;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  border-top: 1px solid #ddd;
 }
 
 @media (max-width: 650px) {
-  form {
-    padding: 1rem;
-    margin: 1rem;
+  .form-scroll-container {
+    padding: 0.5rem;
+  }
+
+  .form-container {
+    padding: 1rem 0.5rem;
   }
 }

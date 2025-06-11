@@ -10,3 +10,18 @@
 .action-column-header {
   margin: 0 auto;
 }
+
+.toolbar-seach {
+  display: flex;
+  justify-content: center;
+  background-color: #007A3D;
+  color: white;
+}
+
+.loading-spinner {
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: hsl(0, 0, 0, 0.15);
+}
