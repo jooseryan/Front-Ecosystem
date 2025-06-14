@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SeachComponent } from './seach';
+import { ConfirmationDialog } from './confirmation-dialog';
 
-describe('Seach', () => {
-  let component: SeachComponent;
-  let fixture: ComponentFixture<SeachComponent>;
+describe('ConfirmationDialog', () => {
+  let component: ConfirmationDialog;
+  let fixture: ComponentFixture<ConfirmationDialog>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SeachComponent]
+      imports: [ConfirmationDialog]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SeachComponent);
+    fixture = TestBed.createComponent(ConfirmationDialog);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

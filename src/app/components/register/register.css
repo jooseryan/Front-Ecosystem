@@ -1,9 +1,8 @@
-/* Reset básico e altura total para body e html */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* evita scroll na página inteira */
+  overflow: hidden;
 }
 
 .toolbar-register {
@@ -17,19 +16,19 @@ html, body {
 }
 
 .form-scroll-container {
-  height: calc(100vh - 64px); /* altura total da tela menos a toolbar */
+  height: calc(100vh - 64px);
   overflow-y: auto;
   padding: 1rem;
   box-sizing: border-box;
 }
 
 .form-container {
-  max-width: 900px; /* limita a largura do form */
+  max-width: 900px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding-bottom: 48px; /* espaço para os botões fixos, se quiser */
+  padding-bottom: 48px;
 }
 
 mat-form-field {

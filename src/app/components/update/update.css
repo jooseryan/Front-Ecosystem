@@ -1,0 +1,64 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.toolbar-update {
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #007A3D;
+  color: white;
+  flex-shrink: 0;
+}
+
+.form-scroll-container {
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.form-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 48px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.author-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.form-actions {
+  position: sticky;
+  bottom: 0;
+  background: white;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  border-top: 1px solid #ddd;
+}
+
+@media (max-width: 650px) {
+  .form-scroll-container {
+    padding: 0.5rem;
+  }
+
+  .form-container {
+    padding: 1rem 0.5rem;
+  }
+}

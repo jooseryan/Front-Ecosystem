@@ -1,1 +1,112 @@
-<p>update works!</p>
+<mat-toolbar class="toolbar-update">Fonte Bibliográfica</mat-toolbar>
+
+<div class="form-scroll-container">
+  <form [formGroup]="form" (ngSubmit)="submit()" class="form-container">
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="title" placeholder="Título" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Ano</mat-label>
+      <input matInput formControlName="year" type="number" placeholder="Ano" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Identificador da Fonte</mat-label>
+      <input matInput formControlName="reviewerCode" placeholder="Ex: A001" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Tipo</mat-label>
+      <mat-select formControlName="type">
+        <mat-option value="" disabled>Selecione o tipo</mat-option>
+        <mat-option *ngFor="let t of sourceTypes" [value]="t">{{ t }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Mídia</mat-label>
+      <mat-select formControlName="media">
+        <mat-option value="" disabled>Selecione a mídia</mat-option>
+        <mat-option *ngFor="let m of mediaTypes" [value]="m">{{ m }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Referência</mat-label>
+      <input matInput formControlName="reference" placeholder="Referência" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Link para Fonte</mat-label>
+      <input matInput formControlName="url" placeholder="Link para Fonte" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Link do Drive</mat-label>
+      <input matInput formControlName="driveUrl" placeholder="Link do Drive" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Link da Imagem</mat-label>
+      <input matInput formControlName="imageUrl" placeholder="Link da Imagem" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Observações</mat-label>
+      <textarea matInput formControlName="notes" placeholder="Observações"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Resumo</mat-label>
+      <textarea matInput formControlName="abstractText" placeholder="Resumo"></textarea>
+    </mat-form-field>
+
+    <h3>Autores</h3>
+    <div formArrayName="authors">
+      <div *ngFor="let author of authors.controls; let i = index" [formGroupName]="i" class="author-fields">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Nome completo</mat-label>
+          <input matInput formControlName="name" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>ORCID</mat-label>
+          <input matInput formControlName="orcid" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Afiliação</mat-label>
+          <input matInput formControlName="affiliation" />
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button color="primary" type="button" (click)="addAuthor()">+ Adicionar Autor</button>
+    </div>
+
+    <h3>Palavras-chave</h3>
+    <div formArrayName="keywords">
+      <div *ngFor="let keyword of keywords.controls; let i = index" [formGroupName]="i">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Palavra-chave</mat-label>
+          <input matInput formControlName="value" />
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button color="primary" type="button" (click)="addKeyword()">+ Adicionar Palavra-chave</button>
+    </div>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit">Enviar</button>
+      <button mat-raised-button type="button" (click)="onCancel()">Cancelar</button>
+    </div>
+
+  </form>
+</div>

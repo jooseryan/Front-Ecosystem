@@ -15,7 +15,7 @@ export class LeftSidebarComponent {
 
   items = [
     { routeLink: 'home', icon: 'fas fa-home', label: 'Home'},
-    { routeLink: 'seach', icon: 'fas fa-magnifying-glass', label: 'Pesquisar'},
+    { routeLink: 'search', icon: 'fas fa-magnifying-glass', label: 'Pesquisar'},
     { routeLink: 'register', icon: 'fas fa-plus', label: 'Cadastrar' },
   ];
 

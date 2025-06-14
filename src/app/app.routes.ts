@@ -2,7 +2,8 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login';
 import { HomeComponent } from './components/home/home';
 import { RegisterComponent } from './components/register/register';
-import { SeachComponent } from './components/seach/seach';
+import { SearchComponent } from './components/search/search';
+import { UpdateComponent } from './components/update/update';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -12,7 +13,8 @@ export const routes: Routes = [
     component: HomeComponent,
     children: [
       { path: 'register', component: RegisterComponent },
-      { path: 'seach', component: SeachComponent}
+      { path: 'search', component: SearchComponent },
+      { path: 'update/:id', component: UpdateComponent }
     ]
   },
   { path: '**', redirectTo: 'login' }

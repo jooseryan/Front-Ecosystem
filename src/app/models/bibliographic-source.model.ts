@@ -2,6 +2,7 @@ import { Author } from './author.model';
 import { Keyword } from './keyword.model';
 
 export interface BibliographicSource {
+  id?: number;
   code: string;
   title: string;
   authors: Author[];
