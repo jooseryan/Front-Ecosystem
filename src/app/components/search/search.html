@@ -1,9 +1,31 @@
 <mat-toolbar class="toolbar-search">Fontes Cadastradas</mat-toolbar>
 
-<ng-container *ngIf="bibliographicSources$ | async as sources; else loading">
+<mat-card>
+  <mat-card-title>Pesquisar Fontes</mat-card-title>
+  <div class="filter-container">
+    <mat-checkbox [(ngModel)]="enabledFilters['title']">Título</mat-checkbox>
+    <mat-form-field *ngIf="enabledFilters['title']">
+      <mat-label>Título</mat-label>
+      <input matInput [(ngModel)]="filters.title" name="title">
+    </mat-form-field>
 
-  <!-- Tabela de materiais para exibir as fontes bibliográficas -->
-  <table mat-table [dataSource]="sources" class="mat-elevation-z8">
+    <mat-checkbox [(ngModel)]="enabledFilters['author']">Autor</mat-checkbox>
+    <mat-form-field *ngIf="enabledFilters['author']">
+      <mat-label>Autor</mat-label>
+      <input matInput [(ngModel)]="filters.author" name="author">
+    </mat-form-field>
+
+
+
+  </div>
+  <button mat-button (click)="clearFilters()">Limpar Filtros</button>
+
+  <button mat-raised-button color="primary" (click)="search()">Pesquisar</button>
+</mat-card>
+
+<ng-container *ngIf="dataSource.data.length > 0; else loading">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
 
     <!-- Coluna: Título -->
     <ng-container matColumnDef="title">

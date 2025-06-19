@@ -35,4 +35,9 @@ export class BibliographicSourceService {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  searchWithFilters(params: any): Observable<BibliographicSource[]> {
+    return this.http.get<BibliographicSource[]>('http://localhost:8080/library/search', { params });
+  }
+
 }
