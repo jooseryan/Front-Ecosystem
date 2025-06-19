@@ -6,7 +6,7 @@ O sistema faz parte do projeto de TCC e foi projetado para atender às necessida
 
 ---
 
-## 🚀 Funcionalidades Principais
+## 🧑🏽‍💻 Funcionalidades Principais
 
 - Interface responsiva e acessível construída com **Angular Standalone Components**
 - Cadastro de fontes bibliográficas com múltiplos autores e palavras-chave
@@ -18,7 +18,7 @@ O sistema faz parte do projeto de TCC e foi projetado para atender às necessida
 
 ---
 
-## 🧱 Tecnologias Utilizadas
+## 📜 Tecnologias Utilizadas
 
 - Angular CLI 20.0.0
 - Angular Standalone Components
