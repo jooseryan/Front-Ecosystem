@@ -39,13 +39,13 @@ export class RegisterComponent implements OnInit {
     private router: Router
   ) {
     this.form = this.fb.group({
-      reviewerCode: ['', Validators.required],
-      title: ['', Validators.required],
-      year: [null, Validators.required],
+      reviewerCode: [''],
+      title: [''],
+      year: [null],
       reference: [''],
       url: [''],
-      type: ['', Validators.required],
-      media: ['', Validators.required],
+      type: [''],
+      media: [''],
       driveUrl: [''],
       imageUrl: [''],
       notes: [''],

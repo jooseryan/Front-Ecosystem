@@ -13,17 +13,24 @@ html, body {
   background-color: #007A3D;
   color: white;
   flex-shrink: 0;
+  margin-bottom: 24px;
 }
 
 .form-scroll-container {
   height: calc(100vh - 64px);
-  overflow-y: auto;
+  overflow-y: scroll;
   padding: 1rem;
   box-sizing: border-box;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.form-scroll-container::-webkit-scrollbar {
+  display: none;
 }
 
 .form-container {
-  max-width: 900px;
+  max-width: 600px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -42,9 +49,7 @@ mat-form-field {
 }
 
 .form-actions {
-  position: sticky;
   bottom: 0;
-  background: white;
   padding-top: 12px;
   padding-bottom: 12px;
   display: flex;
@@ -61,4 +66,34 @@ mat-form-field {
   .form-container {
     padding: 1rem 0.5rem;
   }
+}
+
+h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #007a3d;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #007a3d;
+  padding-bottom: 0.3rem;
+}
+
+.button {
+  background-color: #007a3d !important;
+  color: #ffffff !important;
+  font-weight: 500;
+  padding: 0.5rem 1.2rem;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+  box-shadow: none;
+}
+
+.button:hover {
+  background-color: #004d1a;
+  transform: scale(1.05);
+  box-shadow: none;
+}
+
+.form-actions .button:not(:last-child) {
+  margin-right: 1rem;
 }
