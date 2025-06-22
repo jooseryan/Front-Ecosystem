@@ -109,32 +109,32 @@ export class UpdateComponent implements OnInit {
   }
 
   patchForm(data: any) {
-  this.form.patchValue({
-    reviewerCode: data.reviewerCode,
-    title: data.title,
-    year: data.year,
-    reference: data.reference,
-    url: data.url,
-    type: data.type,
-    media: data.media,
-    driveUrl: data.driveUrl,
-    imageUrl: data.imageUrl,
-    notes: data.notes,
-    abstractText: data.abstractText
-  });
+    this.form.patchValue({
+      reviewerCode: data.reviewerCode,
+      title: data.title,
+      year: data.year,
+      reference: data.reference,
+      url: data.url,
+      type: data.type,
+      media: data.media,
+      driveUrl: data.driveUrl,
+      imageUrl: data.imageUrl,
+      notes: data.notes,
+      abstractText: data.abstractText
+    });
 
-  const authorsArray = this.fb.array<FormGroup>([]);
-  for (let author of data.authors || []) {
-    authorsArray.push(this.createAuthorGroup(author));
-  }
-  this.form.setControl('authors', authorsArray);
+    const authorsArray = this.fb.array<FormGroup>([]);
+    for (let author of data.authors || []) {
+      authorsArray.push(this.createAuthorGroup(author));
+    }
+    this.form.setControl('authors', authorsArray);
 
-  const keywordsArray = this.fb.array<FormGroup>([]);
-  for (let keyword of data.keywords || []) {
-    keywordsArray.push(this.createKeywordGroup(keyword.value));
+    const keywordsArray = this.fb.array<FormGroup>([]);
+    for (let keyword of data.keywords || []) {
+      keywordsArray.push(this.createKeywordGroup(keyword.value));
+    }
+    this.form.setControl('keywords', keywordsArray);
   }
-  this.form.setControl('keywords', keywordsArray);
-}
 
 
   get authors(): FormArray<FormGroup> {

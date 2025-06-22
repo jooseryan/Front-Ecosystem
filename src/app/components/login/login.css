@@ -159,6 +159,7 @@ form h2 {
   font-family: 'Poppins', sans-serif;
   background-size: 200%;
   transition: 0.5s;
+  color: #ffff;
 }
 
 .btn:hover {

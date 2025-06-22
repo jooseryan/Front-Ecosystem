@@ -182,6 +182,7 @@ search(): void {
   if (this.enabledFilters['media']) params.media = this.filters.media;
 
   this.bibliographicService.searchWithFilters(params).subscribe(data => {
+    console.log('Resultados da pesquisa:', data);
     this.dataSource.data = data;
   });
 }

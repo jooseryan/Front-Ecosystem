@@ -1,27 +1,130 @@
-.mat-table {
-  overflow: auto;
-  max-height: 600px;
-}
-
-.action-column {
-  flex: 0 0 125px;
-}
-
-.action-column-header {
-  margin: 0 auto;
-}
-
+/* Toolbar */
 .toolbar-search {
   display: flex;
   justify-content: center;
-  background-color: #007A3D;
+  background-color: #007A3D; /* Verde bandeira */
   color: white;
 }
 
+/* Spinner de carregamento */
 .loading-spinner {
   padding: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: hsl(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+/* Card de filtro */
+mat-card {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #F5F5F5; /* Fundo suave */
+  border: 2px solid #007A3D;
+  border-radius: 0px;
+}
+
+/* Título do card */
+mat-card-title {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #1A1A1A; /* Texto escuro */
+  margin-bottom: 8px;
+}
+
+/* Container de filtros */
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Botões de busca e limpar */
+.button-search {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.custom-button {
+  font-size: 12px;
+  padding: 4px 8px;
+  min-width: 0;
+  height: 32px;
+  line-height: 1.2;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+/* Botão "Pesquisar" */
+.custom-button.mat-raised-button {
+  background-color: #007A3D;
+  color: white;
+}
+
+.custom-button.mat-raised-button:hover {
+  background-color: #33A063; /* Hover verde mais claro */
+}
+
+/* Botão "Limpar Filtros" */
+.custom-button.mat-button {
+  color: #007A3D;
+}
+
+.custom-button.mat-button:hover {
+  background-color: rgba(0, 122, 61, 0.1); /* Verde claro transparente */
+}
+
+/* Tabela */
+table {
+  width: 100%;
+  margin: 20px 0;
+  overflow: hidden;
+  background-color: #FFFFFF;
+  border: 2px solid #007A3D;
+  border-radius: 0px;
+}
+
+/* Cabeçalho da tabela */
+th.mat-header-cell {
+  background-color: #007A3D;
+  color: white;
+  font-weight: 600;
+}
+
+/* Células da tabela */
+td.mat-cell {
+  padding: 8px;
+  color: #333333;
+}
+
+/* Ícones de ação */
+button[mat-icon-button] {
+  margin-right: 4px;
+  color: #3D5C4F; /* Cinza esverdeado */
+}
+
+button[mat-icon-button]:hover {
+  color: #007A3D;
+}
+
+/* Responsividade para mobile */
+@media (max-width: 600px) {
+  .filter-container {
+    grid-template-columns: 1fr;
+  }
+
+  mat-card {
+    padding: 16px;
+  }
+
+  mat-toolbar.toolbar-search {
+    font-size: 16px;
+    padding: 12px;
+  }
 }
