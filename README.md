@@ -1,59 +1,47 @@
-# FrontEcosystem
+# 🌿 FrontEcosystem
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
+Este é o frontend da aplicação **Ecosystem**, desenvolvida em Angular 16+ com **Angular Material**, voltada para o gerenciamento e pesquisa de fontes bibliográficas e dados ambientais/acadêmicos.
 
-## Development server
+O sistema faz parte do projeto de TCC e foi projetado para atender às necessidades de pesquisadores, estudantes e professores da área de Ecologia e áreas correlatas.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## 🧑🏽‍💻 Funcionalidades Principais
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Interface responsiva e acessível construída com **Angular Standalone Components**
+- Cadastro de fontes bibliográficas com múltiplos autores e palavras-chave
+- Formulários reativos com validações
+- Busca avançada com **filtros dinâmicos** (título, autor, ano, tipo, mídia)
+- Autenticação com JWT e proteção de rotas por perfil (user/admin)
+- Diálogos de confirmação personalizados
+- Integração total com o backend em **Spring Boot**
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 📜 Tecnologias Utilizadas
 
-```bash
-ng generate component component-name
-```
+- Angular CLI 20.0.0
+- Angular Standalone Components
+- Angular Material
+- Reactive Forms
+- JWT Interceptor
+- `HttpClient`
+- HTML
+- CSS
+- TypeScript
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## 📁 Estrutura do Projeto
 
 ```bash
-ng test
-```
+src/app/
+├── home/                  # Layout e navegação principal
+├── register/              # Cadastro de fontes bibliográficas
+├── search/                # Tela de pesquisa com filtros
+├── models/                # Interfaces de dados (Author, Keyword, Source)
+├── services/              # Integração com API REST
+├── shared/
+│   └── components/
+│       └── confirmation-dialog/
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
