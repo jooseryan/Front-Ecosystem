@@ -169,8 +169,8 @@ enabledFilters: { [key: string]: boolean } = {
   media: false
 };
 
-types = ['TCC', 'Revista', 'Artigo', 'Jornal', 'Monografia', 'Livro'];
-medias = ['Impresso', 'Online'];
+types = ['TCC', 'REVISTA', 'ARTIGO', 'JORNAL', 'MONOGRAFIA', 'LIVRO'];
+medias = ['IMPRESSO', 'ONLINE'];
 
 search(): void {
   const params: any = {};

@@ -1,12 +1,10 @@
-/* Toolbar */
 .toolbar-search {
   display: flex;
   justify-content: center;
-  background-color: #007A3D; /* Verde bandeira */
+  background-color: #007A3D;
   color: white;
 }
 
-/* Spinner de carregamento */
 .loading-spinner {
   padding: 25px;
   display: flex;
@@ -15,72 +13,76 @@
   background: rgba(0, 0, 0, 0.15);
 }
 
-/* Card de filtro */
 mat-card {
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background-color: #F5F5F5; /* Fundo suave */
+  background-color: #F5F5F5;
   border: 2px solid #007A3D;
   border-radius: 0px;
 }
 
-/* Título do card */
 mat-card-title {
   display: flex;
   justify-content: center;
   font-size: 14px;
   font-weight: bold;
-  color: #1A1A1A; /* Texto escuro */
+  color: #1A1A1A;
   margin-bottom: 8px;
 }
 
-/* Container de filtros */
 .filter-container {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-/* Botões de busca e limpar */
-.button-search {
+.button-container {
   display: flex;
   justify-content: flex-end;
   gap: 12px;
   margin-top: 16px;
 }
 
-.custom-button {
-  font-size: 12px;
-  padding: 4px 8px;
-  min-width: 0;
-  height: 32px;
-  line-height: 1.2;
-  border-radius: 20px;
+.button-search {
+  background-color: #007a3d !important;
+  color: #ffffff !important;
+  font-weight: 500;
+  padding: 0.5rem 1.2rem;
+  border-radius: 25px;
   transition: background-color 0.3s ease;
+  box-shadow: none;
 }
 
-/* Botão "Pesquisar" */
-.custom-button.mat-raised-button {
-  background-color: #007A3D;
-  color: white;
+.button-search:hover {
+  background-color: #004d1a;
+  transform: scale(1.05);
+  box-shadow: none;
 }
 
-.custom-button.mat-raised-button:hover {
-  background-color: #33A063; /* Hover verde mais claro */
+.button-clear {
+  background-color: transparent !important;
+  color: #007A3D !important;
+  font-weight: 500;
+  border: 1px solid #007A3D;
+  padding: 0.5rem 1.2rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
 }
 
-/* Botão "Limpar Filtros" */
-.custom-button.mat-button {
-  color: #007A3D;
+.button-clear:hover {
+  background-color: #e8f5e9 !important;
+  color: #d32f2f !important;
+  transform: scale(1.03);
 }
 
-.custom-button.mat-button:hover {
-  background-color: rgba(0, 122, 61, 0.1); /* Verde claro transparente */
+.button-delete:hover {
+  background-color: #e8f5e9 !important;
+  color: #eb2929 !important;
+  transform: scale(1.03);
 }
 
-/* Tabela */
 table {
   width: 100%;
   margin: 20px 0;
@@ -90,30 +92,26 @@ table {
   border-radius: 0px;
 }
 
-/* Cabeçalho da tabela */
 th.mat-header-cell {
   background-color: #007A3D;
   color: white;
   font-weight: 600;
 }
 
-/* Células da tabela */
 td.mat-cell {
   padding: 8px;
   color: #333333;
 }
 
-/* Ícones de ação */
 button[mat-icon-button] {
   margin-right: 4px;
-  color: #3D5C4F; /* Cinza esverdeado */
+  color: #2d7256;
 }
 
 button[mat-icon-button]:hover {
-  color: #007A3D;
+  color: #1bc06e;
 }
 
-/* Responsividade para mobile */
 @media (max-width: 600px) {
   .filter-container {
     grid-template-columns: 1fr;

@@ -4,40 +4,44 @@
   <mat-card-title>SELECIONE OS CAMPOS PARA A BUSCA</mat-card-title>
   <div class="filter-container">
     <mat-checkbox [(ngModel)]="enabledFilters['title']">Título</mat-checkbox>
-    <mat-form-field *ngIf="enabledFilters['title']">
+    <mat-form-field appearance="outline" *ngIf="enabledFilters['title']">
       <mat-label>Título</mat-label>
       <input matInput [(ngModel)]="filters.title" name="title">
     </mat-form-field>
 
     <mat-checkbox [(ngModel)]="enabledFilters['author']">Autor</mat-checkbox>
-    <mat-form-field *ngIf="enabledFilters['author']">
+    <mat-form-field appearance="outline" *ngIf="enabledFilters['author']">
       <mat-label>Autor</mat-label>
       <input matInput [(ngModel)]="filters.author" name="author">
     </mat-form-field>
 
     <mat-checkbox [(ngModel)]="enabledFilters['year']">Ano</mat-checkbox>
-    <mat-form-field *ngIf="enabledFilters['year']">
+    <mat-form-field appearance="outline" *ngIf="enabledFilters['year']">
       <mat-label>Ano</mat-label>
       <input matInput [(ngModel)]="filters.year" name="year">
     </mat-form-field>
 
     <mat-checkbox [(ngModel)]="enabledFilters['type']">Tipo</mat-checkbox>
-    <mat-form-field *ngIf="enabledFilters['type']">
+    <mat-form-field appearance="outline" *ngIf="enabledFilters['type']">
       <mat-label>Tipo</mat-label>
-      <input matInput [(ngModel)]="filters.type" name="type">
+      <mat-select [(ngModel)]="filters.type" name="type">
+        <mat-option *ngFor="let tipo of types" [value]="tipo">{{ tipo }}</mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-checkbox [(ngModel)]="enabledFilters['media']">Mídia</mat-checkbox>
-    <mat-form-field *ngIf="enabledFilters['media']">
+    <mat-form-field appearance="outline" *ngIf="enabledFilters['media']">
       <mat-label>Mídia</mat-label>
-      <input matInput [(ngModel)]="filters.media" name="media">
+      <mat-select [(ngModel)]="filters.media" name="media">
+        <mat-option *ngFor="let midia of medias" [value]="midia">{{ midia }}</mat-option>
+      </mat-select>
     </mat-form-field>
   </div>
 
-  <div class="button-search">
-    <button mat-button class="custom-button" (click)="clearFilters()">Limpar Filtros</button>
+  <div class="button-container">
+    <button mat-raised-button class="button-clear" (click)="clearFilters()">Limpar Filtros</button>
 
-    <button mat-raised-button color="primary" class="custom-button" (click)="search()">Pesquisar</button>
+    <button mat-raised-button class="button-search" (click)="search()">Pesquisar</button>
   </div>
 
 </mat-card>
@@ -45,20 +49,16 @@
 <ng-container *ngIf="dataSource.data.length > 0; else loading">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-
-    <!-- Coluna: Título -->
     <ng-container matColumnDef="title">
       <th mat-header-cell *matHeaderCellDef>Título</th>
       <td mat-cell *matCellDef="let element">{{ element.title }}</td>
     </ng-container>
 
-    <!-- Coluna: Ano -->
     <ng-container matColumnDef="year">
       <th mat-header-cell *matHeaderCellDef>Ano</th>
       <td mat-cell *matCellDef="let element">{{ element.year }}</td>
     </ng-container>
 
-    <!-- Coluna: Autores -->
     <ng-container matColumnDef="authors">
       <th mat-header-cell *matHeaderCellDef>Autor(es)</th>
       <td mat-cell *matCellDef="let element">
@@ -70,27 +70,24 @@
       </td>
     </ng-container>
 
-    <!-- Coluna: Tipo -->
     <ng-container matColumnDef="type">
       <th mat-header-cell *matHeaderCellDef>Tipo</th>
       <td mat-cell *matCellDef="let element">{{ element.type }}</td>
     </ng-container>
 
-    <!-- Coluna: Mídia -->
     <ng-container matColumnDef="media">
       <th mat-header-cell *matHeaderCellDef>Mídia</th>
       <td mat-cell *matCellDef="let element">{{ element.media }}</td>
     </ng-container>
 
-    <!-- Coluna: Ações (Editar e Excluir) -->
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Ações</th>
       <td mat-cell *matCellDef="let element">
-        <button mat-icon-button color="primary" aria-label="Editar Fonte" (click)="onEdit(element)">
+        <button mat-icon-button class="button-edit" (click)="onEdit(element)">
           <mat-icon>edit</mat-icon>
         </button>
 
-        <button mat-icon-button color="warn" aria-label="Remover Fonte" (click)="onDelete(element)">
+        <button mat-icon-button class="button-delete" (click)="onDelete(element)">
           <mat-icon>delete</mat-icon>
         </button>
       </td>

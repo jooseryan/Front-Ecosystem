@@ -46,8 +46,6 @@ export class RegisterComponent implements OnInit {
       url: [''],
       type: [''],
       media: [''],
-      driveUrl: [''],
-      imageUrl: [''],
       notes: [''],
       abstractText: [''],
       authors: this.fb.array<FormGroup>([]),
