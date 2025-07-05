@@ -3,39 +3,50 @@
 <mat-card>
   <mat-card-title>SELECIONE OS CAMPOS PARA A BUSCA</mat-card-title>
   <div class="filter-container">
-    <mat-checkbox [(ngModel)]="enabledFilters['title']">Título</mat-checkbox>
-    <mat-form-field appearance="outline" *ngIf="enabledFilters['title']">
-      <mat-label>Título</mat-label>
-      <input matInput [(ngModel)]="filters.title" name="title">
-    </mat-form-field>
 
-    <mat-checkbox [(ngModel)]="enabledFilters['author']">Autor</mat-checkbox>
-    <mat-form-field appearance="outline" *ngIf="enabledFilters['author']">
-      <mat-label>Autor</mat-label>
-      <input matInput [(ngModel)]="filters.author" name="author">
-    </mat-form-field>
+    <div class="filter-row">
+      <mat-checkbox [(ngModel)]="enabledFilters['title']">Título</mat-checkbox>
+      <mat-form-field appearance="outline" *ngIf="enabledFilters['title']" class="filter-input">
+        <mat-label></mat-label>
+        <input matInput [(ngModel)]="filters.title" name="title">
+      </mat-form-field>
+    </div>
 
-    <mat-checkbox [(ngModel)]="enabledFilters['year']">Ano</mat-checkbox>
-    <mat-form-field appearance="outline" *ngIf="enabledFilters['year']">
-      <mat-label>Ano</mat-label>
-      <input matInput [(ngModel)]="filters.year" name="year">
-    </mat-form-field>
+    <div class="filter-row">
+      <mat-checkbox [(ngModel)]="enabledFilters['author']">Autor</mat-checkbox>
+      <mat-form-field appearance="outline" *ngIf="enabledFilters['author']" class="filter-input">
+        <mat-label></mat-label>
+        <input matInput [(ngModel)]="filters.author" name="author">
+      </mat-form-field>
+    </div>
 
-    <mat-checkbox [(ngModel)]="enabledFilters['type']">Tipo</mat-checkbox>
-    <mat-form-field appearance="outline" *ngIf="enabledFilters['type']">
-      <mat-label>Tipo</mat-label>
-      <mat-select [(ngModel)]="filters.type" name="type">
-        <mat-option *ngFor="let tipo of types" [value]="tipo">{{ tipo }}</mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div class="filter-row">
+      <mat-checkbox [(ngModel)]="enabledFilters['year']">Ano</mat-checkbox>
+      <mat-form-field appearance="outline" *ngIf="enabledFilters['year']" class="filter-input">
+        <mat-label></mat-label>
+        <input matInput [(ngModel)]="filters.year" name="year">
+      </mat-form-field>
+    </div>
 
-    <mat-checkbox [(ngModel)]="enabledFilters['media']">Mídia</mat-checkbox>
-    <mat-form-field appearance="outline" *ngIf="enabledFilters['media']">
-      <mat-label>Mídia</mat-label>
-      <mat-select [(ngModel)]="filters.media" name="media">
-        <mat-option *ngFor="let midia of medias" [value]="midia">{{ midia }}</mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div class="filter-row">
+      <mat-checkbox [(ngModel)]="enabledFilters['type']">Tipo</mat-checkbox>
+      <mat-form-field appearance="outline" *ngIf="enabledFilters['type']">
+        <mat-label></mat-label>
+        <mat-select [(ngModel)]="filters.type" name="type">
+          <mat-option *ngFor="let tipo of types" [value]="tipo">{{ tipo }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="filter-row">
+      <mat-checkbox [(ngModel)]="enabledFilters['media']">Mídia</mat-checkbox>
+      <mat-form-field appearance="outline" *ngIf="enabledFilters['media']">
+        <mat-label></mat-label>
+        <mat-select [(ngModel)]="filters.media" name="media">
+          <mat-option *ngFor="let midia of medias" [value]="midia">{{ midia }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </div>
 
   <div class="button-container">

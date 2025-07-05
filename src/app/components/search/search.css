@@ -35,7 +35,21 @@ mat-card-title {
 .filter-container {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.filter-input {
+  flex: 1; /* Faz o campo ocupar o espaço restante */
+}
+
+mat-form-field {
+  justify-content: center;
 }
 
 .button-container {
