@@ -94,15 +94,16 @@ export class RegisterComponent implements OnInit {
 
       this.http.post('http://localhost:8080/library/add', this.form.value, { headers }).subscribe({
         next: () => {
-          this.snackBar.open('Fonte cadastrada com sucesso!', '', { duration: 3000, panelClass: ['snackbar-success'] });
-          this.router.navigate(['/home/seach']);
+          this.snackBar.open('Fonte cadastrada com sucesso!', '', { duration: 5000, panelClass: ['snackbar-success'] });
+          this.form.reset();
+          this.router.navigate(['/home/register']);
         },
         error: () => {
-          this.snackBar.open('Erro ao cadastrar fonte.', '', { duration: 3000, panelClass: ['snackbar-error'] });
+          this.snackBar.open('Erro ao cadastrar fonte.', '', { duration: 5000, panelClass: ['snackbar-error'] });
         }
       });
     } else {
-      this.snackBar.open('Formulário inválido. Verifique os campos.', '', { duration: 3000, panelClass: ['snackbar-warning'] });
+      this.snackBar.open('Formulário inválido. Verifique os campos.', '', { duration: 5000, panelClass: ['snackbar-warning'] });
     }
   }
 }

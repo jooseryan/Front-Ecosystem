@@ -1,10 +1,37 @@
+/* Scroll vertical da página */
+.form-scroll-container {
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+  box-sizing: border-box;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  background-color: #f9f9f9;
+}
+
+.form-scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+/* Container geral centralizado */
+.form-container {
+  max-width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 16px;
+}
+
+/* Centraliza o título */
 .toolbar-search {
   display: flex;
   justify-content: center;
   background-color: #007A3D;
   color: white;
+  width: 100%;
 }
 
+/* Spinner de carregamento */
 .loading-spinner {
   padding: 25px;
   display: flex;
@@ -13,45 +40,60 @@
   background: rgba(0, 0, 0, 0.15);
 }
 
+/* Cartão principal */
 mat-card {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  background-color: #F5F5F5;
+  gap: 10px;
+  background-color: #ffffff;
   border: 2px solid #007A3D;
   border-radius: 0px;
+  width: 100%;
 }
 
+/* Título do card */
 mat-card-title {
   display: flex;
   justify-content: center;
   font-size: 14px;
-  font-weight: bold;
   color: #1A1A1A;
   margin-bottom: 8px;
 }
 
+/* Container dos filtros */
 .filter-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
+/* Linha de filtro */
 .filter-row {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  height: 70px;
+  width: 100%;
 }
 
+/* Checkbox com largura mínima */
+.filter-row mat-checkbox {
+  width: 120px;
+  min-width: 120px;
+}
+
+/* Campo de entrada ajustável */
 .filter-input {
-  flex: 1; /* Faz o campo ocupar o espaço restante */
+  flex: 1;
 }
 
+/* Campos de formulário com largura total */
 mat-form-field {
-  justify-content: center;
+  width: 100%;
 }
 
+/* Botões de ação */
 .button-container {
   display: flex;
   justify-content: flex-end;
@@ -59,6 +101,7 @@ mat-form-field {
   margin-top: 16px;
 }
 
+/* Botão de pesquisa */
 .button-search {
   background-color: #007a3d !important;
   color: #ffffff !important;
@@ -75,6 +118,7 @@ mat-form-field {
   box-shadow: none;
 }
 
+/* Botão de limpar */
 .button-clear {
   background-color: transparent !important;
   color: #007A3D !important;
@@ -91,32 +135,37 @@ mat-form-field {
   transform: scale(1.03);
 }
 
+/* Botão de deletar */
 .button-delete:hover {
   background-color: #e8f5e9 !important;
   color: #eb2929 !important;
   transform: scale(1.03);
 }
 
+/* Tabela */
 table {
-  width: 100%;
+  max-width: 80%;
   margin: 20px 0;
-  overflow: hidden;
+
   background-color: #FFFFFF;
   border: 2px solid #007A3D;
   border-radius: 0px;
 }
 
+/* Cabeçalho da tabela */
 th.mat-header-cell {
   background-color: #007A3D;
   color: white;
   font-weight: 600;
 }
 
+/* Células da tabela */
 td.mat-cell {
   padding: 8px;
   color: #333333;
 }
 
+/* Botões de ação da tabela */
 button[mat-icon-button] {
   margin-right: 4px;
   color: #2d7256;
@@ -126,6 +175,7 @@ button[mat-icon-button]:hover {
   color: #1bc06e;
 }
 
+/* Responsivo */
 @media (max-width: 600px) {
   .filter-container {
     grid-template-columns: 1fr;

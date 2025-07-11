@@ -6,14 +6,14 @@ html, body {
 }
 
 .toolbar-register {
-  height: 64px;
+
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #007A3D;
   color: white;
-  flex-shrink: 0;
-  margin-bottom: 24px;
+  max-width: 80%;
+  margin: auto;
 }
 
 .form-scroll-container {
@@ -65,6 +65,11 @@ mat-form-field {
 
   .form-container {
     padding: 1rem 0.5rem;
+  }
+
+  mat-toolbar.toolbar-search {
+    font-size: 16px;
+    padding: 12px;
   }
 }
 

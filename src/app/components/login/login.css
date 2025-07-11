@@ -166,6 +166,10 @@ form h2 {
   background-position: right;
 }
 
+.error-snackbar{
+  background-color: #38d39f !important;
+}
+
 /* Responsividade */
 
 @media screen and (max-width: 1050px) {

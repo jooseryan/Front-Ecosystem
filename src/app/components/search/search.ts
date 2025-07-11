@@ -10,8 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
-import { MatLabel } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
 import { BibliographicSource } from '../../models/bibliographic-source.model';
@@ -24,6 +23,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-search',
@@ -42,6 +42,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatCheckboxModule,
     MatCardModule,
     MatButtonModule,
+    MatPaginator
   ],
   templateUrl: './search.html',
   styleUrls: ['./search.css']
@@ -54,13 +55,17 @@ export class SearchComponent implements OnInit {
   bibliographicSources$!: Observable<BibliographicSource[]>;
   errorMessage: string | null = null;
 
+  currentPage: number = 0;
+  pageSize: number = 10;
+  totalElements: number = 0;
+
   constructor(
     private bibliographicService: BibliographicSourceService,
     public dialog: MatDialog,
     private router: Router,
     private http: HttpClient,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadBibliographicSources();
@@ -69,17 +74,27 @@ export class SearchComponent implements OnInit {
   loadBibliographicSources(): void {
     this.errorMessage = null;
 
-    this.bibliographicService.getAll().pipe(
-      tap(data => {
-        this.dataSource.data = data;
+    this.bibliographicService.getPaginated(this.currentPage, this.pageSize).pipe(
+      tap(response => {
+        this.dataSource.data = response.content;
+        this.totalElements = response.totalElements;
+        this.pageSize = response.size;
+        this.currentPage = response.number;
       }),
       catchError(error => {
-        console.error('Error loading bibliographic sources:', error);
-        this.onError('Erro ao carregar fontes bibliográficas. Tente novamente mais tarde.');
-        return of([]);
+        console.error('Erro ao carregar fontes:', error);
+        this.onError('Erro ao carregar fontes bibliográficas. Tente novamente.');
+        return of({ content: [], totalElements: 0, totalPages: 0, number: 0, size: 10 });
       })
     ).subscribe();
   }
+
+  onPageChange(event: any): void {
+    this.currentPage = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.loadBibliographicSources();
+  }
+
 
   onError(errorMsg: string): void {
     this.dialog.open(ErrorDialogComponent, {
@@ -100,7 +115,7 @@ export class SearchComponent implements OnInit {
       data: 'Tem certeza que deseja remover essa fonte?',
       width: '400px',
       height: '200px',
-      disableClose: true
+      disableClose: true,
     });
 
     dialogRef.afterClosed().subscribe((result: boolean) => {
@@ -146,53 +161,53 @@ export class SearchComponent implements OnInit {
   }
 
   filterOptions = {
-  title: false,
-  author: false,
-  year: false,
-  type: false,
-  media: false
-};
+    title: false,
+    author: false,
+    year: false,
+    type: false,
+    media: false
+  };
 
-filters = {
-  title: '',
-  author: '',
-  year: null,
-  type: '',
-  media: ''
-};
+  filters = {
+    title: '',
+    author: '',
+    year: null,
+    type: '',
+    media: ''
+  };
 
-enabledFilters: { [key: string]: boolean } = {
-  title: false,
-  author: false,
-  year: false,
-  type: false,
-  media: false
-};
+  enabledFilters: { [key: string]: boolean } = {
+    title: false,
+    author: false,
+    year: false,
+    type: false,
+    media: false
+  };
 
-types = ['TCC', 'REVISTA', 'ARTIGO', 'JORNAL', 'MONOGRAFIA', 'LIVRO'];
-medias = ['IMPRESSO', 'ONLINE'];
+  types = ['TCC', 'REVISTA', 'ARTIGO', 'JORNAL', 'MONOGRAFIA', 'LIVRO'];
+  medias = ['IMPRESSO', 'ONLINE'];
 
-search(): void {
-  const params: any = {};
+  search(): void {
+    const params: any = {};
 
-  if (this.enabledFilters['title']) params.title = this.filters.title;
-  if (this.enabledFilters['author']) params.author = this.filters.author;
-  if (this.enabledFilters['year']) params.year = this.filters.year;
-  if (this.enabledFilters['type']) params.type = this.filters.type;
-  if (this.enabledFilters['media']) params.media = this.filters.media;
+    if (this.enabledFilters['title']) params.title = this.filters.title;
+    if (this.enabledFilters['author']) params.author = this.filters.author;
+    if (this.enabledFilters['year']) params.year = this.filters.year;
+    if (this.enabledFilters['type']) params.type = this.filters.type;
+    if (this.enabledFilters['media']) params.media = this.filters.media;
 
-  this.bibliographicService.searchWithFilters(params).subscribe(data => {
-    console.log('Resultados da pesquisa:', data);
-    this.dataSource.data = data;
-  });
-}
+    this.bibliographicService.searchWithFilters(params).subscribe(data => {
+      console.log('Resultados da pesquisa:', data);
+      this.dataSource.data = data;
+    });
+  }
 
-clearFilters(): void {
-  this.filters = { title: '', author: '', year: null, type: '', media: '' };
-  this.enabledFilters = { title: false, author: false, year: false, type: false, media: false };
+  clearFilters(): void {
+    this.filters = { title: '', author: '', year: null, type: '', media: '' };
+    this.enabledFilters = { title: false, author: false, year: false, type: false, media: false };
 
-  this.loadBibliographicSources();
-}
+    this.loadBibliographicSources();
+  }
 
 
 }

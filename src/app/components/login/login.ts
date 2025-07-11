@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -13,17 +14,16 @@ import { FormsModule } from '@angular/forms';
 export class LoginComponent {
   username = '';
   password = '';
-  inputFocusStates: { [key: string]: boolean } = {}; // Para controle do foco dos inputs
+  inputFocusStates: { [key: string]: boolean } = {};
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private snackBar: MatSnackBar) { }
 
-  // Controla o estado de foco para cada input, para aplicar/remover classes CSS
+
   onFocus(inputName: string) {
     this.inputFocusStates[inputName] = true;
   }
 
   onBlur(inputName: string) {
-    // Remove foco se o input estiver vazio
     if ((inputName === 'username' && !this.username) || (inputName === 'password' && !this.password)) {
       this.inputFocusStates[inputName] = false;
     }
@@ -38,7 +38,11 @@ export class LoginComponent {
         this.redirectByRole();
       },
       error: () => {
-        alert('Usuário ou senha inválidos');
+        this.snackBar.open('Usuário ou senha inválidos', 'Fechar', {
+          duration: 5000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom'
+        });
       }
     });
   }
@@ -59,7 +63,7 @@ export class LoginComponent {
     }
 
     if (payload.roles.includes("ROLE_ADMIN")) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home/search']);
     } else if (payload.roles.includes("ROLE_USER")) {
       this.router.navigate(['/painel-usuario']);
     } else {
