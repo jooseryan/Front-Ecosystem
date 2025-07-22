@@ -8,7 +8,8 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 a {
@@ -22,4 +23,8 @@ a:hover {
   color: #00994CFF;
 }
 
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
