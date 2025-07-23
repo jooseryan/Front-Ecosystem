@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>Detalhes da Fonte</h2>
+
+<mat-dialog-content>
+  <p><strong>Código do Revisor:</strong> {{ data.reviewerCode || "Não informado" }}</p>
+  <p><strong>Título:</strong> {{ data.title || "Não informado" }}</p>
+  <p><strong>Ano:</strong> {{ data.year || "Não informado" }}</p>
+  <p><strong>Tipo:</strong> {{ data.type || "Não informado" }}</p>
+  <p><strong>Mídia:</strong> {{ data.media || "Não informado" }}</p>
+
+  <p><strong>Link:</strong>
+    <a *ngIf="data.url" [href]="data.url" target="_blank" rel="noopener noreferrer">{{ data.url }}</a>
+    <span *ngIf="!data.url">Não informado</span>
+  </p>
+
+  <p><strong>Referência:</strong> {{ data.reference || "Não informado" }}</p>
+
+  <p><strong>Resumo:</strong></p>
+  <p>{{ data.abstractText || data.resumo || "Não informado" }}</p>
+
+  <p><strong>Notas:</strong></p>
+  <p>{{ data.notes || "Não informado" }}</p>
+
+  <p><strong>Palavras-chave:</strong></p>
+  <ul>
+    <li *ngFor="let keyword of data.keywords">{{ keyword.value || "Sem palavras-chave" }}</li>
+    <li *ngIf="!data.keywords || data.keywords.length === 0">Sem palavras-chave</li>
+  </ul>
+
+  <p><strong>Autor(es):</strong></p>
+  <ul>
+    <li *ngFor="let author of data.authors">{{ author.name || "Sem nome" }}</li>
+    <li *ngIf="!data.authors || data.authors.length === 0">Sem autor(es)</li>
+  </ul>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Fechar</button>
+</mat-dialog-actions>
