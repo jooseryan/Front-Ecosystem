@@ -1,1 +1,34 @@
-<p>import works!</p>
+<mat-toolbar class="toolbar-import">Importar Dados</mat-toolbar>
+
+<div class="form-scroll-container">
+  <div class="import-content">
+
+
+
+    <a href="assets/exemplo.csv" download class="download-link">
+      Baixar arquivo CSV de exemplo
+    </a>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="import-form">
+      <input
+        type="file"
+        accept=".csv"
+        id="fileInput"
+        #fileInput
+        (change)="onFileSelected($event)"
+        hidden
+      />
+
+      <button mat-raised-button type="button" class="button-select" (click)="fileInput.click()">
+        Selecionar arquivo CSV
+      </button>
+
+      <button mat-raised-button class="button" type="submit" [disabled]="!fileToUpload">
+        Enviar Arquivo
+      </button>
+
+      <span *ngIf="fileToUpload" class="file-name">{{ fileToUpload.name }}</span>
+    </form>
+
+  </div>
+</div>

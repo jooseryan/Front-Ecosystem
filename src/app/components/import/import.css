@@ -1,0 +1,93 @@
+.import-content {
+  max-width: 600px; /* igual à .form-container */
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 16px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.import-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.file-name {
+  font-style: italic;
+  color: #555;
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.imagem-exemplo {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.button {
+  background-color: #00994CFF !important;
+  color: #ffffff !important;
+  font-weight: 500;
+  padding: 0.5rem 1.2rem;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+  box-shadow: none;
+}
+
+.button:hover {
+  background-color: #007a33;
+  transform: scale(1.05);
+}
+
+.button-select {
+  background-color: transparent !important;
+  color: #00994CFF !important;
+  font-weight: 500;
+  border: 1px solid #00994CFF;
+  padding: 0.5rem 1.2rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.download-link {
+  display: flex;
+  justify-content: center;
+  color: #00994C;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.download-link:hover {
+  text-decoration: underline;
+}
+
+.toolbar-import {
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00994C;
+  color: white;
+  padding: 0 16px;
+
+  /* Igual à form-container */
+  max-width: 600px;
+  margin: 0 auto 24px auto;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+}
