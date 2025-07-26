@@ -1,1 +1,22 @@
-<p>export works!</p>
+<mat-toolbar class="toolbar-export">Exportar Dados</mat-toolbar>
+
+<div class="form-scroll-container">
+
+    <div class="import-content">
+
+        <mat-card-content class="import-form">
+          <p>Os dados serão exportados no formato CSV</p>
+
+          <button mat-raised-button class="button" >
+             <mat-icon>download</mat-icon>
+            Exportar
+          </button>
+        </mat-card-content>
+
+
+      <a *ngIf="downloadLink" class="download-link" [href]="downloadLink" download>
+        Clique aqui para baixar seu arquivo exportado
+      </a>
+
+    </div>
+</div>

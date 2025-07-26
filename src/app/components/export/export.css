@@ -1,0 +1,74 @@
+.toolbar-export {
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00994C;
+  color: white;
+  padding: 0 16px;
+
+  /* Igual à form-container */
+  max-width: 600px;
+  margin: 0 auto 24px auto;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.import-content {
+  max-width: 600px; /* igual à .form-container */
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 16px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.download-link {
+  display: flex;
+  justify-content: center;
+  color: #00994C;
+  font-weight: 500;
+  margin-top: 16px;
+  text-decoration: none;
+}
+
+.download-link:hover {
+  text-decoration: underline;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  background-color: #00994CFF !important;
+  color: #ffffff !important;
+  font-weight: 500;
+  padding: 0.5rem 1.2rem;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+  box-shadow: none;
+}
+
+.button:hover {
+  background-color: #007a33;
+  transform: scale(1.05);
+}
+
+.import-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 16px;
+}
+
+
