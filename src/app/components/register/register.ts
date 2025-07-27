@@ -49,13 +49,15 @@ export class RegisterComponent implements OnInit {
       notes: [''],
       abstractText: [''],
       authors: this.fb.array<FormGroup>([]),
-      keywords: this.fb.array<FormGroup>([])
+      keywords: this.fb.array<FormGroup>([]),
+      researchCities: this.fb.array<FormGroup>([])
     });
   }
 
   ngOnInit() {
     this.addAuthor();
     this.addKeyword();
+    this.addResearchCity();
   }
 
   private createAuthorGroup(author: any = {}): FormGroup {
@@ -71,6 +73,12 @@ export class RegisterComponent implements OnInit {
     return this.fb.group({ value: [value] });
   }
 
+  private createResearchCityGroup(name: string = ''): FormGroup {
+  return this.fb.group({
+    name: [name]
+  });
+}
+
   get authors(): FormArray<FormGroup> {
     return this.form.get('authors') as FormArray<FormGroup>;
   }
@@ -79,6 +87,10 @@ export class RegisterComponent implements OnInit {
     return this.form.get('keywords') as FormArray<FormGroup>;
   }
 
+  get researchCities(): FormArray<FormGroup> {
+  return this.form.get('researchCities') as FormArray<FormGroup>;
+}
+
   addAuthor() {
     this.authors.push(this.createAuthorGroup());
   }
@@ -86,6 +98,10 @@ export class RegisterComponent implements OnInit {
   addKeyword() {
     this.keywords.push(this.createKeywordGroup());
   }
+
+  addResearchCity() {
+  this.researchCities.push(this.createResearchCityGroup());
+}
 
   submit() {
     if (this.form.valid) {
@@ -96,7 +112,6 @@ export class RegisterComponent implements OnInit {
         next: () => {
           this.snackBar.open('Fonte cadastrada com sucesso!', '', { duration: 5000, panelClass: ['snackbar-success'] });
           this.form.reset();
-          this.router.navigate(['/home/register']);
         },
         error: () => {
           this.snackBar.open('Erro ao cadastrar fonte.', '', { duration: 5000, panelClass: ['snackbar-error'] });

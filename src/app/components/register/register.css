@@ -1,24 +1,20 @@
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
 .toolbar-register {
-
+ height: 64px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #007A3D;
+  background-color: #00994C;
   color: white;
-  max-width: 80%;
-  margin: auto;
+  padding: 0 16px;
+
+  /* Igual à form-container */
+  max-width: 600px;
+  margin: 0 auto 24px auto;
+  box-sizing: border-box;
+  border-radius: 4px;
 }
 
 .form-scroll-container {
-  height: calc(100vh - 64px);
-  overflow-y: scroll;
   padding: 1rem;
   box-sizing: border-box;
   scrollbar-width: none;
@@ -76,15 +72,15 @@ mat-form-field {
 h3 {
   font-size: 1.4rem;
   font-weight: 600;
-  color: #007a3d;
+  color: #00994CFF;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
-  border-bottom: 2px solid #007a3d;
+  border-bottom: 2px solid #00994CFF;
   padding-bottom: 0.3rem;
 }
 
 .button {
-  background-color: #007a3d !important;
+  background-color: #00994CFF !important;
   color: #ffffff !important;
   font-weight: 500;
   padding: 0.5rem 1.2rem;
@@ -94,7 +90,7 @@ h3 {
 }
 
 .button:hover {
-  background-color: #004d1a;
+  background-color: #00994CFF;
   transform: scale(1.05);
   box-shadow: none;
 }
@@ -105,9 +101,9 @@ h3 {
 
 .button-cancel {
   background-color: transparent !important;
-  color: #007A3D !important;
+  color: #00994CFF !important;
   font-weight: 600;
-  border: 1px solid #007A3D;
+  border: 1px solid #00994CFF;
   padding: 0.5rem 1.2rem;
   border-radius: 25px;
   transition: all 0.3s ease;
@@ -118,4 +114,3 @@ h3 {
   color: #d32f2f !important;
   transform: scale(1.03);
 }
-

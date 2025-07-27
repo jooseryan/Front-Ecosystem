@@ -88,6 +88,19 @@
       <button mat-raised-button type="button" (click)="addKeyword()" class="button">Adicionar Palavra-chave</button>
     </div>
 
+    <h3>Cidade</h3>
+    <div formArrayName="researchCities">
+      <div *ngFor="let city of researchCities.controls; let i = index" [formGroupName]="i">
+        <mat-form-field appearance="outline">
+          <mat-label>Cidade da Pesquisa</mat-label>
+          <input matInput formControlName="name" placeholder="Nome da Cidade">
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button type="button" (click)="addResearchCity()" class="button">Adicionar Cidade</button>
+    </div>
+
+
     <div class="form-actions">
       <button mat-raised-button type="reset" class="button-cancel">Cancelar</button>
       <button mat-raised-button type="submit" class="button">Enviar</button>
