@@ -1,15 +1,7 @@
 /* Scroll vertical da página */
 .form-scroll-container {
-  height: calc(100vh - 64px);
-  overflow-y: auto;
   box-sizing: border-box;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
   background-color: #f9f9f9;
-}
-
-.form-scroll-container::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
 }
 
 /* Container geral centralizado */
@@ -26,7 +18,7 @@
 .toolbar-search {
   display: flex;
   justify-content: center;
-  background-color: #007A3D;
+  background-color: #00994CFF;
   color: white;
   width: 100%;
 }
@@ -42,13 +34,12 @@
 
 /* Cartão principal */
 mat-card {
-  padding: 20px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
   background-color: #ffffff;
-  border: 2px solid #007A3D;
-  border-radius: 0px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   width: 100%;
 }
 
@@ -56,44 +47,81 @@ mat-card {
 mat-card-title {
   display: flex;
   justify-content: center;
-  font-size: 14px;
-  color: #1A1A1A;
-  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #006400;
+  margin-bottom: 16px;
+  text-transform: uppercase;
 }
 
 /* Container dos filtros */
 .filter-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
-/* Linha de filtro */
-.filter-row {
+/* Filtros com caixas decorativas */
+.filter-row,
+.filter-double-row,
+.filter-group,
+.year-range {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.filter-row mat-checkbox,
+.filter-group mat-checkbox {
+  min-width: 120px;
+  flex-shrink: 0;
+  margin-right: 8px;
+}
+
+.filter-row mat-form-field,
+.filter-group mat-form-field {
+  flex: 1;
+  min-width: 160px;
+}
+
+.year-range mat-form-field {
+  width: 120px;
+
+}
+
+/* Cada filtro ocupa metade */
+.filter-pair {
   display: flex;
   align-items: center;
   gap: 12px;
-  height: 70px;
-  width: 100%;
-}
-
-/* Checkbox com largura mínima */
-.filter-row mat-checkbox {
-  width: 120px;
-  min-width: 120px;
-}
-
-/* Campo de entrada ajustável */
-.filter-input {
   flex: 1;
+  min-width: 280px;
 }
 
-/* Campos de formulário com largura total */
+.range-separator {
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Campos de formulário */
 mat-form-field {
   width: 100%;
+  font-size: 14px;
+  height: auto;
 }
 
-/* Botões de ação */
+/* Estilo nos inputs e selects */
+input.mat-input-element,
+.mat-select-value {
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+/* Botões */
 .button-container {
   display: flex;
   justify-content: flex-end;
@@ -101,29 +129,26 @@ mat-form-field {
   margin-top: 16px;
 }
 
-/* Botão de pesquisa */
 .button-search {
-  background-color: #007a3d !important;
+  background-color: #00994CFF !important;
   color: #ffffff !important;
   font-weight: 500;
   padding: 0.5rem 1.2rem;
   border-radius: 25px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   box-shadow: none;
 }
 
 .button-search:hover {
-  background-color: #004d1a;
+  background-color: #007a33;
   transform: scale(1.05);
-  box-shadow: none;
 }
 
-/* Botão de limpar */
 .button-clear {
   background-color: transparent !important;
-  color: #007A3D !important;
+  color: #00994CFF !important;
   font-weight: 500;
-  border: 1px solid #007A3D;
+  border: 1px solid #00994CFF;
   padding: 0.5rem 1.2rem;
   border-radius: 25px;
   transition: all 0.3s ease;
@@ -135,50 +160,124 @@ mat-form-field {
   transform: scale(1.03);
 }
 
-/* Botão de deletar */
 .button-delete:hover {
   background-color: #e8f5e9 !important;
   color: #eb2929 !important;
   transform: scale(1.03);
 }
 
+.button-edit:hover {
+  background-color: #e8f5e9 !important;
+  color: #00994C !important;
+  transform: scale(1.03);
+}
+
 /* Tabela */
 table {
-  max-width: 80%;
+  width: 100%;
   margin: 20px 0;
-
   background-color: #FFFFFF;
-  border: 2px solid #007A3D;
+  border: 2px solid #00994CFF;
   border-radius: 0px;
 }
 
-/* Cabeçalho da tabela */
 th.mat-header-cell {
-  background-color: #007A3D;
+  background-color: #00994CFF !important;
   color: white;
   font-weight: 600;
 }
 
-/* Células da tabela */
 td.mat-cell {
   padding: 8px;
   color: #333333;
 }
 
-/* Botões de ação da tabela */
 button[mat-icon-button] {
   margin-right: 4px;
-  color: #2d7256;
+  color: #00994CFF;
 }
 
 button[mat-icon-button]:hover {
-  color: #1bc06e;
+  color: #00994CFF;
 }
+
+.custom-header {
+  background-color: #00994CFF !important;
+  color: white;
+  font-weight: auto;
+}
+
+/* Paginação customizada */
+.custom-paginator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.custom-paginator button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #00994CFF;
+  background-color: white;
+  color: #00994CFF;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.custom-paginator button.active {
+  background-color: #00994CFF;
+  color: white;
+  border: none;
+}
+
+.custom-paginator button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Título clicável */
+.clickable-title {
+  color: #006400;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.clickable-title:hover {
+  color: #00994C;
+}
+
 
 /* Responsivo */
 @media (max-width: 600px) {
+  .filter-row,
+  .filter-double-row,
+  .year-range,
+  .filter-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
   .filter-container {
-    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .button-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button-search,
+  .button-clear {
+    width: 100%;
+    text-align: center;
   }
 
   mat-card {

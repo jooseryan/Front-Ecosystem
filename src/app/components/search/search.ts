@@ -23,9 +23,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatPaginator } from '@angular/material/paginator';
+import { SourceDetailsDialog } from '../../shared/components/source-details-dialog/source-details-dialog';
 
 @Component({
+
   selector: 'app-search',
   standalone: true,
   imports: [
@@ -41,8 +42,7 @@ import { MatPaginator } from '@angular/material/paginator';
     MatSelectModule,
     MatCheckboxModule,
     MatCardModule,
-    MatButtonModule,
-    MatPaginator
+    MatButtonModule
   ],
   templateUrl: './search.html',
   styleUrls: ['./search.css']
@@ -93,6 +93,26 @@ export class SearchComponent implements OnInit {
     this.currentPage = event.pageIndex;
     this.pageSize = event.pageSize;
     this.loadBibliographicSources();
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.totalElements / this.pageSize);
+  }
+
+  get totalPagesArray(): number[] {
+    return Array(this.totalPages).fill(0);
+  }
+
+  goToPrevious(): void {
+    if (this.currentPage > 0) {
+      this.onPageChange({ pageIndex: this.currentPage - 1, pageSize: this.pageSize });
+    }
+  }
+
+  goToNext(): void {
+    if (this.currentPage < this.totalPages - 1) {
+      this.onPageChange({ pageIndex: this.currentPage + 1, pageSize: this.pageSize });
+    }
   }
 
 
@@ -160,6 +180,13 @@ export class SearchComponent implements OnInit {
     });
   }
 
+  openDetailsDialog(source: BibliographicSource): void {
+    this.dialog.open(SourceDetailsDialog, {
+      width: '500px',
+      data: source
+    });
+  }
+
   filterOptions = {
     title: false,
     author: false,
@@ -171,7 +198,8 @@ export class SearchComponent implements OnInit {
   filters = {
     title: '',
     author: '',
-    year: null,
+    yearStart: null,
+    yearEnd: null,
     type: '',
     media: ''
   };
@@ -188,22 +216,48 @@ export class SearchComponent implements OnInit {
   medias = ['IMPRESSO', 'ONLINE'];
 
   search(): void {
-    const params: any = {};
+  const params: any = {};
 
-    if (this.enabledFilters['title']) params.title = this.filters.title;
-    if (this.enabledFilters['author']) params.author = this.filters.author;
-    if (this.enabledFilters['year']) params.year = this.filters.year;
-    if (this.enabledFilters['type']) params.type = this.filters.type;
-    if (this.enabledFilters['media']) params.media = this.filters.media;
-
-    this.bibliographicService.searchWithFilters(params).subscribe(data => {
-      console.log('Resultados da pesquisa:', data);
-      this.dataSource.data = data;
-    });
+  if (this.enabledFilters['title']) {
+    params.title = this.filters.title;
   }
 
+  if (this.enabledFilters['author']) {
+    params.author = this.filters.author;
+  }
+
+  if (this.enabledFilters['year']) {
+    if (this.filters.yearStart) {
+      params.yearStart = this.filters.yearStart;
+    }
+    if (this.filters.yearEnd) {
+      params.yearEnd = this.filters.yearEnd;
+    }
+  }
+
+  if (this.enabledFilters['type']) {
+    params.type = this.filters.type;
+  }
+
+  if (this.enabledFilters['media']) {
+    params.media = this.filters.media;
+  }
+
+  this.bibliographicService.searchWithFilters(params).subscribe(data => {
+
+    const sorted = data.sort((a, b) => a.year - b.year);
+    console.log('Resultados da pesquisa:', data);
+    this.dataSource.data = sorted;
+  });
+}
+
+  get hasAnyFilterSelected(): boolean {
+  return Object.values(this.enabledFilters).some(value => value);
+}
+
+
   clearFilters(): void {
-    this.filters = { title: '', author: '', year: null, type: '', media: '' };
+    this.filters = { title: '', author: '', yearStart: null, yearEnd: null, type: '', media: '' };
     this.enabledFilters = { title: false, author: false, year: false, type: false, media: false };
 
     this.loadBibliographicSources();
